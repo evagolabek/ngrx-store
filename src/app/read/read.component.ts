@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { Thing } from './../models/thing.model';
+import { AppState } from './../app.state';
+ 
 @Component({
   selector: 'app-read',
   templateUrl: './read.component.html',
@@ -7,7 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReadComponent implements OnInit {
 
-  constructor() { }
+//define a property 
+  things: Observable<Thing[]>;
+
+//access the store, where you pass appState 
+//next you access ngrx store
+//'thing' comes from AppModule where you bind it to the reducer
+  constructor(private store: Store<AppState>) {
+    this.things = store.select('thing');
+   }
 
   ngOnInit() {
   }
