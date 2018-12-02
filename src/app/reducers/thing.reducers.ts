@@ -15,7 +15,10 @@ export function reducer(state: Thing[] = [initialState], action: ThingActions.Ac
  switch(action.type){
   case ThingActions.ADD_THING:
     return [...state, action.payload];
+  case ThingActions.REMOVE_THING:
+    state.splice(action.payload, 1)
+    return [...state, action.payload];
   default:
-  return state;
+    return state;
  }
 }

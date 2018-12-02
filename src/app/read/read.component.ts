@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Thing } from './../models/thing.model';
 import { AppState } from './../app.state';
+//needed for deleting action
+import * as ThingActions from './../actions/thing.actions';
  
 @Component({
   selector: 'app-read',
@@ -19,6 +21,10 @@ export class ReadComponent implements OnInit {
   constructor(private store: Store<AppState>) {
     this.things = store.select('thing');
    }
+
+  delThing(index) {
+    this.store.dispatch(new ThingActions.RemoveThing(index))
+  }
 
   ngOnInit() {
   }

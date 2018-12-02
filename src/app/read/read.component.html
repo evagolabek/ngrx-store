@@ -2,7 +2,7 @@
 <div class="right" *ngIf="things">
   <h3>Things</h3>
   <ul>
-    <li *ngFor="let thing of things | async">
+    <li (click)="delThing(i)" *ngFor="let thing of things | async">
       <a [href]="thing.url" target="_blank">{{thing.name}}</a>
     </li>
   </ul>
